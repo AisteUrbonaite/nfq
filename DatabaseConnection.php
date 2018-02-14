@@ -12,7 +12,7 @@ class DatabaseConnection
        try{
            $connection = new PDO("mysql:dbname:$this->db;host= $this->server;",$this->username, $this->password);
            $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-           echo 'Connected successfully';
+//           echo 'Connected successfully';
        }
        catch(PDOexception $e){
            echo $e->getMessage();
