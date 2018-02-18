@@ -3,16 +3,16 @@
 class DatabaseConnection
 {
     /** @var string */
-    private $server = 'localhost';
+    private $server = 'fdb19.awardspace.net';
 
     /** @var string */
-    private $username ='root';
+    private $username ='2626009_nfq';
 
     /** @var string */
-    private $password ='';
+    private $password ='kalakutas123';
 
     /** @var string */
-    private $db = 'nfq';
+    private $db = '2626009_nfq';
 
     /** @var PDO */
     public $connection;
