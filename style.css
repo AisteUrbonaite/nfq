@@ -1,0 +1,11 @@
+body, html {
+    height: 100%;
+}
+
+.top-buffer {
+    margin-top:20px;
+}
+
+.button-margin {
+    margin: 20px 0;
+}
