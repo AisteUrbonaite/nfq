@@ -5,12 +5,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>Title</title>
+    <title>Užsakymo detalės</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+    <?php include_once 'html_elements/menu_bar.html'; ?>
     <div class="container">
         <div class="row main">
             <div class="main-login main-center">
@@ -30,36 +31,78 @@
                         }
                         $output = '
                             <h2 class="text-center">Užsakymas Nr. ' . $_GET['id'] . '</h2>
-                            <p><b>Užsakymo nr </b>. ' . $order['id'] . '</p>
-                            <p><b>Vardas </b> ' . $order['name'] . '</p>
-                            <p><b>Pavardė </b> ' . $order['last_name'] . '</p>
-                            <p><b>Telefono numeris </b>' . $order['tel_number'] . '</p>
-                            <p><b>El. paštas </b>' . $order['email'] . '</p>
-                            <p><b>Adresas</b>' . $order['address'] . '</p>
-                            <p><b>Miestas </b>' . $order['city'] . '</p>
-                            <p><b>Pašto kodas </b>' . $order['post_code'] . '</p>
-                            <p><b>Šalis </b>' . $order['country'] . '</p>
-                            <p><b>Užsakymo data </b>' . $order['order_date'] . '</p>
-                            <p><b>Užsakyta paslauga</b>' . $order['serviceName'] . '</p>
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>PAVADINIMAS</th>
+                                    <th>REIKŠMĖ</th>
+                                </tr>
+                                </thead>
+                                <tr>
+                                    <td><p><b>Užsakymo nr </b></p></td>
+                                    <td> ' . $order['id'] . '</p></td>
+                                </tr>
+                                <tr>
+                                    <td><p><b>Vardas </b></p> </td>
+                                    <td>' . $order['name'] . '</p></td>
+                                </tr>
+                                <tr>
+                                    <td><p><b>Pavardė </b></p></td>
+                                    <td>' . $order['last_name'] . '</p></td>
+                                </tr>
+                                <tr>
+                                <td><p><b>Telefono numeris </b></p></td>
+                                <td>' . $order['tel_number'] . '</p></td>
+                                </tr>
+                                <tr>
+                                    <td><p><b>El. paštas </b></p></td>
+                                    <td>' . $order['email'] . '</p></td>
+                                </tr>
+                                <tr>
+                                    <td><p><b>Adresas</b></p></td>
+                                    <td>' . $order['address'] . '</p></td>
+                                </tr>
+                                <tr>
+                                    <td><p><b>Miestas </b></p></td>
+                                    <td>' . $order['city'] . '</p></td>
+                                </tr>
+                                <tr>
+                                    <td><p><b>Pašto kodas </b></p></td>
+                                    <td>' . $order['post_code'] . '</p></td>
+                                </tr>
+                                <tr>
+                                    <td><p><b>Šalis </b></p></td>
+                                    <td>' . $order['country'] . '</p></td>
+                                </tr>
+                                <tr>
+                                    <td><p><b>Užsakymo data </b></p></td>
+                                    <td>' . $order['order_date'] . '</p></td>
+                                </tr>
+                                <tr>
+                                <td><p><b>Užsakyta paslauga</b></p></td>
+                                <td>' . $order['serviceName'] . '</p></td>
+                                </tr>
                         ';
 
                         $output .= '
-                            <form class="form-horizontal" role="form" method="post" action="order-details.php?id='.$_GET['id'].'">
-                                <p><b>Užsakymo statusas</b>
+                            <tr>
+                                <td><b>Užsakymo statusas</b></td>
+                                <td><form class="form-horizontal" role="form" method="post" action="order-details.php?id='.$_GET['id'].'">
                                     <select name="status">';
-                        $statuses = $obj->getStatuses();
-                        foreach ($statuses as $status) {
-                            $checked = '';
-                            if ($status['name'] === $order['statusName']) {
-                                $checked = 'selected';
+                            $statuses = $obj->getStatuses();
+                            foreach ($statuses as $status) {
+                                $checked = '';
+                                if ($status['name'] === $order['statusName']) {
+                                    $checked = 'selected';
+                                }
+                                $output .= '<option value="' . $status['id'] . '" ' . $checked . '>' . $status['name'] . '</option>';
                             }
-                            $output .= '<option value="' . $status['id'] . '" ' . $checked . '>' . $status['name'] . '</option>';
-                        }
-                        $output .= '</select>
-                                    <input name="submit" type="submit" value="Keisti" class="btn btn-default">
-                                </p>
-                            </form>
-                            <a href="orders.php" class="btn btn-default col-md-2">Grįžti</a>';
+                            $output .= '</select>
+                                        <input name="submit" type="submit" value="Keisti" class="btn btn-default">
+                                </form></td>
+                            </tr>
+                        </table>
+                        <a href="orders.php" class="btn btn-default col-md-2">Grįžti</a>';
 
                         echo $output;
                     } else {

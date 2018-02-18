@@ -5,11 +5,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>Title</title>
+    <title>Vitamin C</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+    <?php include_once 'html_elements/menu_bar.html'; ?>
     <div class="container">
         <div class="bg">
             <?php
@@ -31,7 +32,7 @@
         <div class="main">
             <div class="main-login main-center">
                 <h2 class="text-center">Užsakymo forma</h2>
-                <form class="form-horizontal" role="form" method="post" action="handle-request.php">
+                <form class="form-horizontal" id="contact_form" role="form" method="post" action="handle-request.php">
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">Vardas</label>
                         <div class="col-sm-10">
@@ -71,13 +72,13 @@
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">Pašto kodas</label>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" id="post_code" name="post_code" placeholder="Pašto kodas" value="" required>
+                            <input type="number" maxlength="5" class="form-control" id="post_code" name="post_code" placeholder="Pašto kodas" value="" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">Šalis</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="country" name="country" placeholder="Šalis" value="" required>
+                            <input type="text" class="form-control" id="country" name="country" placeholder="Šalis" value="Lietuva" required>
                         </div>
                     </div>
                     <input type="hidden" name="service_id" value="1">

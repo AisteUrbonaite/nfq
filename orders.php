@@ -5,17 +5,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>Title</title>
+    <title>Užsakymai</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+    <?php include_once 'html_elements/menu_bar.html'; ?>
     <div class="container">
         <div class="row main">
             <div class="main-login main-center">
                 <h2 class="text-center">Užsakymai</h2>
-                <table class="display" id="order-table">
+                <table class="display table-bordered" id="order-table">
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col" width="50">Užsakymo Nr.</th>
@@ -51,7 +52,7 @@
                                     <td>' . $order['order_date'] . '</td>
                                     <td>' . $order['serviceName'] . '</td>
                                     <td>' . $order['statusName'] . '</td>
-                                    <td><a href="order-details.php?id=' . $order['id'] . '" class="btn btn-default">Peržiūrėti užsakymą</a></td>
+                                    <td><a href="order-details.php?id=' . $order['id'] . '" class="btn btn-default">Peržiūrėti</a></td>
                                 </tr>';
                         }
                     ?>
